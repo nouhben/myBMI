@@ -13,9 +13,55 @@ class _InputPageState extends State<InputPage> {
         title: Text('BMI CALCULATOR'),
       ),
       body: SafeArea(
-        child: Center(
-          child: Text('Body Text'),
+        child: Column(
+          children: [
+            Expanded(
+                child: Row(
+              children: [
+                Expanded(
+                  child: ReusableCard(colour: Color(0xff1D1E33)),
+                ),
+                Expanded(
+                  child: ReusableCard(colour: Color(0xff1D1E33)),
+                ),
+              ],
+            )),
+            Expanded(
+              child: ReusableCard(colour: Color(0xff1D1E33)),
+            ),
+            Expanded(
+                child: Row(
+              children: [
+                Expanded(
+                  child: ReusableCard(colour: Color(0xff1D1E33)),
+                ),
+                Expanded(
+                  child: ReusableCard(colour: Color(0xff1D1E33)),
+                ),
+              ],
+            )),
+          ],
         ),
+      ),
+    );
+  }
+}
+
+class ReusableCard extends StatelessWidget {
+  final Color colour;
+  //we need to make the color required we can't have a null color for our card
+  ReusableCard({@required this.colour});
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(15.0),
+      //color: Color(0xff1D1E33),
+      //TO ADD border radius we use box decoration
+      //but when we use it we have to move the color inside it because
+      //the color is just a shortcut the real thing that is the container uses box decoration behind the scenes
+      decoration: BoxDecoration(
+        color: colour,
+        borderRadius: BorderRadius.circular(15.0),
       ),
     );
   }
