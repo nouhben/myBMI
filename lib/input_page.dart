@@ -35,6 +35,7 @@ class _InputPageState extends State<InputPage> {
 //  }
   Gender _selectedGender;
   int _height = 150;
+  int _weight = 60;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -157,7 +158,35 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: ReusableCard(colour: kActiveCardColor),
+                  child: ReusableCard(
+                    colour: kActiveCardColor,
+                    childCard: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('WEIGHT', style: kLabelStyle),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 12.0, top: 5.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            textBaseline: TextBaseline.alphabetic,
+                            crossAxisAlignment: CrossAxisAlignment.baseline,
+                            children: [
+                              Text(_weight.toString(), style: kNumberStyle),
+                              Text('KG', style: kLabelStyle),
+                            ],
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(),
+                            SizedBox(width: 10.0),
+                            RoundIconButton(),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 ),
                 Expanded(
                   child: ReusableCard(colour: kActiveCardColor),
@@ -180,6 +209,20 @@ class _InputPageState extends State<InputPage> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class RoundIconButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      constraints: BoxConstraints.tightFor(
+        width: 56.0,
+        height: 56.0,
+      ),
+      shape: CircleBorder(),
+      fillColor: Color(0xff4C4F5E),
     );
   }
 }
