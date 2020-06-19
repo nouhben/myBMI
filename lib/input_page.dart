@@ -117,17 +117,37 @@ class _InputPageState extends State<InputPage> {
                       ),
                     ],
                   ),
-                  Slider(
-                    value: _height.toDouble(),
-                    onChanged: (double newValue) {
-                      setState(() {
-                        _height = newValue.round();
-                      });
-                    },
-                    min: 50.0,
-                    max: 250.0,
-                    activeColor: kBottomContainerColor,
-                    inactiveColor: Color(0xff8D8E98),
+                  //in order to change the thumb size and color we have to implement
+                  //slider theme data but it has a lot so we use a shortcut
+                  // which is sliderThem.of(context).copywith() this will copy the themeData of the
+                  //closest slider
+                  // context is simply the state or how the app looks right now
+                  //that will copy default styling and i can override what i want
+
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      //customize what i want
+                      thumbShape: RoundSliderThumbShape(
+                        enabledThumbRadius: 15.0,
+                      ),
+                      thumbColor: kBottomContainerColor,
+                      overlayShape: RoundSliderOverlayShape(
+                        overlayRadius: 30.0,
+                      ),
+                      overlayColor: Color(0x29EB1555),
+                      activeTrackColor: Colors.white,
+                      inactiveTrackColor: Color(0xff8D8E98),
+                    ),
+                    child: Slider(
+                      value: _height.toDouble(),
+                      onChanged: (double newValue) {
+                        setState(() {
+                          _height = newValue.round();
+                        });
+                      },
+                      min: 50.0,
+                      max: 250.0,
+                    ),
                   )
                 ],
               ),
