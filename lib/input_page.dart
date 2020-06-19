@@ -34,7 +34,7 @@ class _InputPageState extends State<InputPage> {
 //    }
 //  }
   Gender _selectedGender;
-  int _height = 0;
+  int _height = 150;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,23 +103,31 @@ class _InputPageState extends State<InputPage> {
             child: ReusableCard(
               colour: kActiveCardColor,
               childCard: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    'HEIGHT',
-                    style: kLabelStyle,
-                    textAlign: TextAlign.center,
-                  ),
+                  Text('HEIGHT', style: kLabelStyle),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    //textBaseline: TextBaseline.alphabetic, i used padding instead of this
                     children: [
-                      Text(
-                        '$_height',
-                        style: kNumberStyle,
+                      Text(_height.toString(), style: kNumberStyle),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 15.0),
+                        child: Text('CM', style: kLabelStyle),
                       ),
                     ],
                   ),
                   Slider(
-                    value: 0,
-                    onChanged: null,
+                    value: _height.toDouble(),
+                    onChanged: (double newValue) {
+                      setState(() {
+                        _height = newValue.round();
+                      });
+                    },
+                    min: 50.0,
+                    max: 250.0,
+                    activeColor: kBottomContainerColor,
+                    inactiveColor: Color(0xff8D8E98),
                   )
                 ],
               ),
