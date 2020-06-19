@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+const double bottomContainerHeight = 80.0;
+const Color activeCardColor = Color(0xff1D1E33);
+const Color bottomContainerColor = Color(0xffEB1555);
+
 class InputPage extends StatefulWidget {
   @override
   _InputPageState createState() => _InputPageState();
@@ -12,36 +16,48 @@ class _InputPageState extends State<InputPage> {
       appBar: AppBar(
         title: Text('BMI CALCULATOR'),
       ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-                child: Row(
+      body: Column(
+        children: [
+          Expanded(
+              child: Row(
+            children: [
+              Expanded(
+                child: ReusableCard(colour: activeCardColor),
+              ),
+              Expanded(
+                child: ReusableCard(colour: activeCardColor),
+              ),
+            ],
+          )),
+          Expanded(
+            child: ReusableCard(colour: activeCardColor),
+          ),
+          Expanded(
+            child: Row(
               children: [
                 Expanded(
-                  child: ReusableCard(colour: Color(0xff1D1E33)),
+                  child: ReusableCard(colour: activeCardColor),
                 ),
                 Expanded(
-                  child: ReusableCard(colour: Color(0xff1D1E33)),
+                  child: ReusableCard(colour: activeCardColor),
                 ),
               ],
-            )),
-            Expanded(
-              child: ReusableCard(colour: Color(0xff1D1E33)),
             ),
-            Expanded(
-                child: Row(
-              children: [
-                Expanded(
-                  child: ReusableCard(colour: Color(0xff1D1E33)),
-                ),
-                Expanded(
-                  child: ReusableCard(colour: Color(0xff1D1E33)),
-                ),
-              ],
-            )),
-          ],
-        ),
+          ),
+          Container(
+            width: double.infinity,
+            height: bottomContainerHeight,
+            margin: EdgeInsets.only(top: 10.0),
+            color: bottomContainerColor,
+            child: Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: Text(
+                'Calculate BMI',
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
