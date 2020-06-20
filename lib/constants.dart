@@ -12,3 +12,24 @@ const TextStyle kNumberStyle = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 50.0,
 );
+const TextStyle kLargeButtonTextStyle = TextStyle(
+  color: Colors.white,
+  fontWeight: FontWeight.bold,
+  fontSize: 25.0,
+);
+const TextStyle kLargeNumberStyle = TextStyle(
+  color: Colors.white,
+  fontWeight: FontWeight.bold,
+  fontSize: 95.0,
+);
+const TextStyle kResultTextStyle = TextStyle(
+  color: Colors.green,
+  fontSize: 30.0,
+  fontWeight: FontWeight.bold,
+);
+const TextStyle kInterpretationTextStyle = TextStyle(
+  color: Colors.white70,
+  fontSize: 18.0,
+  fontWeight: FontWeight.w700,
+  letterSpacing: 3.0,
+);
