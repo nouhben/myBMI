@@ -26,12 +26,12 @@ class CalculatorBrain {
 
   String getInterpretation() {
     if (_bmi >= 25) {
-      return 'Overweight: you have a higher than normal bmi 🙄. Try to Exercice more 🏃 and Eat less 🥦‍';
+      return 'You have a higher than normal bmi 🙄. \n Try to Exercice more \n 🏋️‍ ️🏃‍♂️ \n and Eat less \n 🍔🍺';
     } else {
       if (_bmi > 18.5) {
-        return 'Normal weight: you have a bmi. Keep up the good work 😎';
+        return 'You have a normal bmi. Keep up the good work \n 😎 🍳 💪';
       } else {
-        return 'Underweight: you have a lower than normal bmi 🤕. Try to Exercice more 🏃 and Eat more 🥑‍';
+        return 'You have a lower than normal bmi 🤕. \n Try to Exercice more 🏃 \n and Eat more 🥑 🥩‍';
       }
     }
   }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mybmi/buttom_button.dart';
-import 'package:mybmi/reusable_card.dart';
+import 'package:mybmi/components/buttom_button.dart';
+import 'package:mybmi/components/reusable_card.dart';
 
-import 'constants.dart';
+import '../constants.dart';
 
 class ResultScreen extends StatelessWidget {
   final String bmi;
@@ -22,12 +22,9 @@ class ResultScreen extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Container(
-              padding: EdgeInsets.only(top: 40.0),
-              child: Text(
-                'Your results',
-                style: kNumberStyle,
-                textAlign: TextAlign.center,
-              ),
+              padding: EdgeInsets.all(15.0),
+              alignment: Alignment.bottomLeft,
+              child: Text('Your results', style: kNumberStyle),
             ),
           ),
           Expanded(
@@ -38,10 +35,10 @@ class ResultScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text('Overweight', style: kResultTextStyle),
-                    Text('20.9', style: kLargeNumberStyle),
+                    Text(bmiResultText.toUpperCase(), style: kResultTextStyle),
+                    Text(bmi, style: kLargeNumberStyle),
                     Text(
-                      'You have a higher than normal body weight jkhfkjhfdkjh',
+                      bmiResultInterpretation,
                       style: kInterpretationTextStyle,
                       textAlign: TextAlign.center,
                     ),
