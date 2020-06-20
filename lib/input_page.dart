@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mybmi/reusable_card.dart';
+import 'package:mybmi/round_icon_button.dart';
 
 import 'constants.dart';
 import 'icon_content.dart';
@@ -36,6 +37,7 @@ class _InputPageState extends State<InputPage> {
   Gender _selectedGender;
   int _height = 150;
   int _weight = 60;
+  int _age = 20;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -181,10 +183,20 @@ class _InputPageState extends State<InputPage> {
                           children: [
                             RoundIconButton(
                               icon: FontAwesomeIcons.plus,
+                              onPress: () {
+                                setState(() {
+                                  _weight++;
+                                });
+                              },
                             ),
                             SizedBox(width: 10.0),
                             RoundIconButton(
                               icon: FontAwesomeIcons.minus,
+                              onPress: () {
+                                setState(() {
+                                  _weight > 20 ? _weight-- : _weight = 20;
+                                });
+                              },
                             ),
                           ],
                         )
@@ -193,7 +205,49 @@ class _InputPageState extends State<InputPage> {
                   ),
                 ),
                 Expanded(
-                  child: ReusableCard(colour: kActiveCardColor),
+                  child: ReusableCard(
+                    colour: kActiveCardColor,
+                    childCard: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('AGE', style: kLabelStyle),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 12.0, top: 5.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            textBaseline: TextBaseline.alphabetic,
+                            crossAxisAlignment: CrossAxisAlignment.baseline,
+                            children: [
+                              Text(_age.toString(), style: kNumberStyle),
+                              Text('yrs', style: kLabelStyle),
+                            ],
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPress: () {
+                                setState(() {
+                                  _age++;
+                                });
+                              },
+                            ),
+                            SizedBox(width: 10.0),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onPress: () {
+                                setState(() {
+                                  _age > 0 ? _age-- : _age = 20;
+                                });
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -213,23 +267,6 @@ class _InputPageState extends State<InputPage> {
           ),
         ],
       ),
-    );
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  final IconData icon;
-  RoundIconButton({@required this.icon});
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      elevation: 6.0,
-      disabledElevation: 6.0,
-      onPressed: () {},
-      child: Icon(icon),
-      constraints: BoxConstraints.tightFor(width: 56.0, height: 56.0),
-      shape: CircleBorder(),
-      fillColor: Color(0xff4C4F5E),
     );
   }
 }
