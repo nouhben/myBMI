@@ -252,16 +252,21 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            width: double.infinity,
-            height: kBottomContainerHeight,
-            margin: EdgeInsets.only(top: 10.0),
-            color: kBottomContainerColor,
-            child: Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: Text(
-                'Calculate BMI',
-                textAlign: TextAlign.center,
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/results');
+            },
+            child: Container(
+              width: double.infinity,
+              height: kBottomContainerHeight,
+              margin: EdgeInsets.only(top: 10.0),
+              color: kBottomContainerColor,
+              child: Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Text(
+                  'Calculate BMI',
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
           ),

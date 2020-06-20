@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mybmi/result_screen.dart';
 
 import 'input_page.dart';
 
@@ -33,7 +34,12 @@ class BMICalculator extends StatelessWidget {
 //        ),
 //        accentColor: Colors.redAccent[400],
 //      ),
-      home: InputPage(),
+      //home: InputPage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => InputPage(),
+        '/results': (context) => ResultScreen(),
+      },
     );
   }
 }
